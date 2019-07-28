@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>My first Vue</title>
+</head>
+<body>
+    <div class="container">
+        <div class="first">{{ message1 }}</div>
+        <span class="second" v-bind:title = "message"> Stay under  the text</span>
+        <span class="showHide" v-if="vara"><br>Now, U see this</span>
+        <div class="cicle">
+            <ul>
+                <li  v-for='item in values'>{{item.item}}</li>
+            </ul>
+        </div>
+    
+    </div>
+
+
+<script>
+let first = new Vue({
+    el: '.first',
+    data: {
+        message1: 'Holly light!'
+    }
+});
+let second = new Vue({
+    el: '.second',
+    data: {
+        message: 'My first Vue!!!!'
+    }
+})
+let dIf = new Vue({
+    el: '.showHide',
+    data: {
+        vara: true
+    }
+});
+let cicle = new Vue({
+    el: '.cicle',
+    data:{
+        values: [{item:'I'}, {item:'am'},{item:'learning'}, {item:'VueJs!'}],
+        counts: [1,2],
+        empty:[]
+    }
+});
+
+cicle.values.push({item: 'Its Cool!!!'});
+
+for (let i=3; i<10; i++){
+    cicle.counts.push(i);
+}
+
+</script>
+</body>
+</html>

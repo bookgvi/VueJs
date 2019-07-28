@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>Components VueJs</title>
+</head>
+<body>
+    <div class="container">
+        <div class="app7">
+            <ol>
+                <some v-for='key in message'
+                    v-bind:mess='key'
+                    v-bind:key ='key.id'
+                ></some>
+            </ol>
+        </div>
+    </div>
+
+<script>
+Vue.component('some', {
+    props: ['mess'],
+    template: '<li>{{mess.text}}</li>'
+});
+
+let app7 = new Vue({
+    el: '.app7',
+    data: {
+        message:    [{id:'0', text:'JavaScript'},
+                    {id:'1', text: 'VueJs'},
+                    {id:'3', text: 'Awesome!'}]
+    }
+});
+
+</script>
+</body>
+</html>

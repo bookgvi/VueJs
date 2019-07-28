@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>VueJs, methods</title>
+</head>
+<body>
+    <div class="container">
+        <div class="app5">
+            <label for="reverse">{{message}}</label>
+            <button class="reverse" v-on:click='reverseMessage'>Нажмите чтобы перевернуть сообщение</button>
+        </div>
+        <div class="app6">
+            <p>{{message}}</p>
+            <input v-model="message"  v-on:input='hInput'>
+        </div>
+        <div class="list"><p>Simple list:</p>
+        <ul>
+            <li v-for='keys in tmpArr'>{{keys}}</li>
+        </ul>
+        </div>
+    </div>
+
+<script>
+let app4 = new Vue({
+    el: '.list',
+    data: {
+        tmpArr: []
+    }
+});
+
+let app5 = new Vue({
+    el: '.app5',
+    data: {
+        message: 'I\'m learning VueJs!'
+    },
+    methods: {
+        reverseMessage: function(){this.message = this.message.split('').reverse().join('');}
+    }
+});
+let app6 = new Vue({
+    el: '.app6',
+    data: {
+        message: 'Holly light!'
+    },
+    methods: {
+        hInput: function(e){
+            app5.message = e.target.value;
+            app4.tmpArr.push(e.target.value);
+        }
+    }
+});
+
+</script>
+</body>
+</html>
