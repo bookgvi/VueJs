@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>{{month}}</title>
+</head>
+<body>
+<div class="container">
+    <div class="calendar">
+        <div class='month'> 
+            <table :id='month'>
+                <p><caption>
+                    <span @click.prevent='changeMonthB' class="chMonth">◄</span> 
+                    {{month}}
+                    <span @click.prevent='changeMonthF' class="chMonth">►</span>  
+                </caption></p>
+                <tr><td v-for='(item,index) in weekDaysArr' :class='index>4 ? "weekEndStyle": "regular"'>{{item}}</td></tr>
+                <tr v-for='(item, index) in 6'>
+                    <td v-for='item in days[index]'>{{item}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>    
+</body>
+</html>

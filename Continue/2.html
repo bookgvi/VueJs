@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="block1">
+            <span>{{date}}</span>
+            <input type="text" v-model='value'><label for="">{{reverse}}</label>
+        </div>
+    </div>
+<script>
+let vm = new Vue({
+    el: '.block1',
+    data: {
+        date: '',
+        value: 'Ivanov'
+    },
+    computed: {
+        reverse: function(){
+            return this.value.split('').reverse().join('');
+        }
+    },
+    methods: {
+        dateF: function(){
+            setInterval(()=>{
+                this.date = new Date();
+            },0);
+            // return this.date;
+        }
+    }
+});
+vm.dateF();
+</script>
+</body>
+</html>

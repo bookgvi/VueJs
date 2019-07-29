@@ -1,0 +1,14 @@
+table, td {
+    margin: 50px auto;
+    text-align: center;
+}
+caption {
+    font: 22px arial;
+}
+
+.chMonth{
+    cursor: pointer;
+}
+.chMonth:hover {
+    color: green;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <div class="block1">
+        <label for="input1" v-html='rawHtml'>{{message}}</label>
+        <input type="text" v-if='seen' v-model='rawHtml'>
+        <button v-on:click='hideShow'>Hide/Show input field</button>
+    </div>
+</div>
+
+<script>
+Vue.component('app-label',{
+    // props:['val'],
+    template: '<label v-html={{rawHtml}}></label>'
+});
+let vm = new Vue({
+    el: '.block1',
+    data: {
+        message: 'Test',
+        rawHtml: "<span style='color: red;'>Holly red</span>",
+        seen: true
+    },
+    methods: {
+        hideShow: function(){this.seen = !this.seen}
+    }
+});
+
+</script>
+</body>
+</html>
