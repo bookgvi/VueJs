@@ -10,20 +10,30 @@
 </head>
 <body>
 <div class="container">
-    <div class="calendar">
-        <div class='month'> 
-            <table :id='month'>
-                <p><caption>
-                    <span @click.prevent='changeMonthB' class="chMonth">◄</span> 
-                    {{month}}
-                    <span @click.prevent='changeMonthF' class="chMonth">►</span>  
-                </caption></p>
-                <tr><td v-for='(item,index) in weekDaysArr' :class='index>4 ? "weekEndStyle": "regular"'>{{item}}</td></tr>
-                <tr v-for='(item, index) in 6'>
-                    <td v-for='item in days[index]'>{{item}}</td>
-                </tr>
-            </table>
-        </div>
+    <div id = 'calendar' class="calendar">
+        <tool-tip
+            :msg='now'
+            v-if='ttToday'
+            :class = '{tooltip}'
+            :style='coordTT'
+        ></tool-tip>
+
+        <table :id='month' @mouseover='hMouseOver' @mouseout='hMouseOut'>
+            <caption>
+                <span @click.prevent='changeMonthB' @click.right.prevent class="chMonth">◄</span> 
+                    <span  @click.right.prevent @click.left.prevent='chMonthCur' class="chMonth">{{month}}</span>
+                <span @click.prevent='changeMonthF' @click.right.prevent class="chMonth">►</span>  
+            </caption>
+            <tr>
+                <td v-for='(item,index) in weekDaysArr' :class='index>4 ? "weekEndStyle": "regular"'>{{item}}</td>
+            </tr>
+            <tr 
+                v-for='(item, index) in 6'>
+                <td v-for='item in days[index]' 
+                    :class='item==today && month==toMonth ? "today" : "regular"'
+                    >{{item}}</td>
+            </tr>
+        </table>
     </div>
 </div>
 

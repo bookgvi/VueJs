@@ -1,11 +1,18 @@
-Vue.component('app-day',{
-    props: ['day'],
-    template: '<td>{{day}}</td>'
+Vue.component('tool-tip',{
+    props: ['msg'],
+    template: '<span>{{msg}}</span>'
 });
+
 let vm = new Vue({
-    el: '.calendar',
+    el: '#calendar',
     data: {
+        ttToday: false,  // visible
+        tooltip: true,  //css class .tooltip
+        coordTT: [{left: '250px'}, {top: '250px'}],
+        
         now: new Date(),
+        today: 0,
+        toMonth: 0,
         daysCount: 31,
         curMonth: 0,   
         firstDay: 0,  
@@ -13,10 +20,9 @@ let vm = new Vue({
         weekDaysArr: [' Mon ',' Tue ',' Wed ',' Thu ',' Fri ',' Sat ',' Sun ']
     },
     created: function(){
-        let now = new Date();
-        this.curMonth = now.getMonth();
-
-
+        this.curMonth = this.now.getMonth();
+        this.today = this.now.getDate();
+        this.toMonth = this.monthArr[this.now.getMonth()];
     },
 
     computed: {
@@ -38,7 +44,8 @@ let vm = new Vue({
                 for(j=i; j<i+7 && j < this.daysCount;j++){
                     days[k].push(j+1);
                 }
-                [i,j] = [j,i]
+                i=j;
+                // [i,j] = [j,i]
             }
             return days;
         }
@@ -54,12 +61,26 @@ let vm = new Vue({
             let nextMonth = new Date(this.now.getFullYear(), this.curMonth+1, 01);
             this.daysCount = (nextMonth - curMonth)/1000/3600/24;
         },
+
         changeMonthF: function(e){
             if(this.curMonth<11) this.curMonth++;
         },        
         changeMonthB: function(e){
             if(this.curMonth>0) this.curMonth--;
         },
+        chMonthCur: function(){
+            this.curMonth = this.now.getMonth();
+        },
+        hMouseOver: function(e){
+            if(e.target.className!='today') return;
+            this.ttToday = true;
+            this.coordTT[0].left = e.target.getBoundingClientRect().left + e.target.clientWidth + 'px';
+            this.coordTT[1].top = e.target.getBoundingClientRect().top - e.target.clientHeight + 'px';
+        },
+        hMouseOut: function(e){
+            if(e.target.className!='today') return;
+            this.ttToday = false;
+        }
 
     }
 });
