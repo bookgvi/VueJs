@@ -4,14 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.jsdelivr.net/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Comments management</title>
 </head>
 <body>
 <div class="container">
     <div class="posts-manage">
+        <work-card
+            :msg='msg'
+            @comment='commentHandler'
+            @showbtn='hShowBtn'
+            @blurbtn='hBlurBtn'
+            :visible='showBtn'
 
+            @save = 'hSave'
+            @cancel = 'hCancel'
+        ></work-card>
+
+        <show-comments
+            v-for='item in posts'
+            :key = 'item.id'
+            :comments ='item'
+            @shtooltip='shTooltip'
+            :disabled='editTitle'
+
+            :visible='showBtn2'
+            @focus2='hShowBtn2'
+
+            @save2 = 'hSave2'
+            @cancel2 = 'hCancel2'
+
+        ></show-comments>
+
+        <tool-tip
+            v-if='showTT'
+            :coord='coordTT'
+            @hidett='hideTT'
+            @edit='hEditTitle'
+        ></tool-tip>
     </div>
 </div>
 

@@ -1,0 +1,56 @@
+body{
+    box-sizing: border-box;
+}
+
+.card{}
+
+h3:nth-child(1){
+    border-bottom:  1px solid #777;
+}
+.card .card__title {
+    font: 1.2em Arial;
+    color: rgb(115, 192, 0);
+}
+
+.card__comments{
+    font: 1.2em Arial;
+}
+
+.card__comments .card__info{
+    font: 0.8em Arial ;
+    color: grey;
+}
+
+.card__info__date-style{
+    font: 0.8em Arial;
+}
+
+.card__info__modify-style{
+    cursor: pointer;
+}
+
+.tooltip {
+    position: fixed;
+    z-index: 100;
+    /* подсказка должна перекрывать другие элементы */
+
+    /* padding: 5px 5px; */
+    /* красивости... */
+
+    border: 1px solid #b3c9ce;
+    border-radius: 4px;
+    text-align: center;
+    font: italic 14px/1.3 sans-serif;
+    color: #333;
+    background: #fff;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+
+    cursor: pointer;
+  }
+  .tooltip span {
+    display: block;
+    padding: 10px 10px;
+  }
+  .tooltip span:hover {
+    background-color: rgba(0, 204, 255, 0.507);
+  }
