@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Component example</title>
+</head>
+<body>
+<div class="blog">
+    <h1>Title text</h1>
+    <div class="blog_post" :style='{fontSize: postFontSize + "em"}'>
+        <ul>
+        <blog-post
+            v-for='post in posts'
+            :key='post.id'
+            :post='post'
+            @enlarge='largerFont'
+            @ensmall='postFontSize -= $event'
+        ></blog-post>
+        </ul>
+    </div>
+</div>
+<script>
+    Vue.component('blog-post',{
+        props: ['post'],
+        template: ` <li>
+                        <h3>
+                            <span>{{post.title}}</span>
+                            <button @click ="$emit('enlarge',0.2)">+</button>
+                            <button @click ="$emit('ensmall',0.2)">-</button>
+                        </h3>
+                        <span>{{post.date}}</span>
+                        <div v-html='post.msg'></div>
+                    </li>`
+    });
+    const vm = new Vue({
+        el: '.blog_post',
+        data: {
+            posts: [
+                {id:1, title: 'First post', msg:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, sunt?', date:'2019-08-04'},
+                {id:2, title: 'Another post', msg:' Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque quia animi consequuntur dolore', date:'2019-01-04'}
+            ],
+            postFontSize: 1
+        },
+        methods:{
+            largerFont: function(e){
+                this.postFontSize += e;
+            }
+        }
+    });
+</script>    
+</body>
+</html>
