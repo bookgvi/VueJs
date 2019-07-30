@@ -1,0 +1,24 @@
+body{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.clock {
+    cursor: pointer;
+    font-family: sans-serif;  
+    color: #ffffff;  
+    text-align: center;  
+    position: absolute;  
+    left: 50%;  
+    top: 50%;  
+    -webkit-transform: translate(-50%, -50%);  
+    transform: translate(-50%, -50%);  
+    color: #daf6ff;  
+    text-shadow: 0 0 20px #252796, 0 0 20px rgba(59, 202, 250, 0);
+}
+.clock .time {  
+    letter-spacing: 0.05em;  
+    font-size: 15em;  
+    padding: 5px 0;  
+    }  
+     
