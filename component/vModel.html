@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-model</title>
+</head>
+<body>
+<div class="container">
+    <div id="block1">
+
+                <some-post
+                    v-for='(item, index) in post'
+                    :key='item.id'
+                    :id='index'
+                    :posts='post[index]'
+                    :disable='disable[index]'
+                    :check='check[index]'
+                    :shbtnsave='shbtnSave[index]'
+                    :shbtnCancel='shbtnCancel[index]'
+                    :shcheck='shCheck'
+                    @entername='enterName'
+                    @savename='saveName'
+                    @cancelname='cancelName'
+                    @check='checkbox'
+                ></some-post>
+
+    </div>
+</div>
+
+<script>
+Vue.component('some-post',{
+    props: {
+        id: Number,
+        posts: Object,
+        wordcount: Number,
+        disable: Boolean,
+        check: Boolean,
+        shbtnsave: Boolean,
+        shbtncancel: Boolean,
+        shcheck: Boolean
+    },
+    template: ` <div>
+                    <label for='someInpput'>{{posts.title + ' ' + posts.date + ' ' + posts.author}} - Change the author? - </label>
+                    <input type='checkbox' :checked='check' v-if='shcheck' @change='$emit("check", id)'>
+                    <input type='text' placeholder='name' :value='posts.author' @input='$emit("entername", $event.target.value)' :disabled='disable'>
+                    <button @click='$emit("savename", id)' v-if='shbtnsave'>Save</button>
+                    <button @click='$emit("cancelname", id)' v-if='shbtncancel'>Cancel</button>
+                    
+                </div>`,
+});
+
+const vm = new Vue({
+    el: '#block1',
+    data: {
+        id:0,
+        disable: [true, true],
+        check: [false, false],
+        shbtnSave: [false, false],
+        shbtnCancel: [false, false],
+        shCheck: true,
+        author: [],
+        post: [
+            {id:1, title:'Sample Post', author: 'John Doe', date: new Date().toLocaleTimeString()},
+            {id:2, title:'Borring Post', author: 'Jack Sheldon', date: new Date().toLocaleTimeString()}
+        ],
+    },
+
+    methods: {
+        enterName: function(e){
+            this.author = e;
+        },
+        cancelName: function(e){
+            this.author = '';
+            this.checkbox(e);
+        },
+        saveName: function(e){
+            this.post[e].author = this.author;
+            this.checkbox(e);
+        },
+        checkbox: function(e){
+            Vue.set(this.disable,e,!this.disable[e]);
+            Vue.set(this.check, e, !this.check[e]);
+            Vue.set(this.shbtnSave, e, !this.shbtnSave[e]);
+            Vue.set(this.shbtnCancel, e, !this.shbtnCancel[e]);
+            this.shCheck=!this.shCheck;
+        }
+    }
+});
+</script>
+</body>
+</html>

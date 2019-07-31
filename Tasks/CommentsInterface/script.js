@@ -27,24 +27,24 @@ Vue.component('work-card',{
 });
 
 Vue.component('show-comments',{
+    data: function(){
+        return {
+            attrib: 'v-model',
+            visible: false
+        }
+    },
     props: {
         comments:   Object,
         disabled:    Boolean,
-        visible:   Boolean
     },
     template: `
         <div class="card__comments">
-            <input type='text' :value='comments.title' :disabled='disabled' 
-                @input='$emit("focus2",$event)' @focus='$emit("focus2",$event)' ></>
+            <input type='text' :[attrib]='comments.title' :disabled='disabled' 
+                @input='hShowBtn2'></>
 
                 <button v-if='visible'
-                    @click='$emit("save2")'
+                    @click='save2'
                 >Сохранить</button>
-
-                <button v-if='visible'
-                    @click='$emit("cancel2")'
-                >Отменить</button>
-
             <br>
             <div class="card__info">
                 <span class="card__info__author-style">{{comments.author}}</span>
@@ -56,6 +56,17 @@ Vue.component('show-comments',{
         
         </div>
         `,
+        methods: {
+            save2:  function(){
+                console.log(comments.title)
+                this.attrib = 'v-model';
+            },
+            hShowBtn2:  function(e){
+                this.visible = true;
+                this.editValue = e.target.value;
+             }
+    
+        }
 });
 
 Vue.component('tool-tip',{
