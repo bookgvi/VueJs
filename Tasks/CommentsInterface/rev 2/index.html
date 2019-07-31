@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Cards</title>
+</head>
+<body>
+<div class="container">
+    <div class="cards">
+        <h2>Подумать</h2>
+        <h3>Продавец</h3>
+        ------------------------------------------------------------------------------------------
+        <add-post
+            :sh_addpost_btns='sh_addpost_btns'
+            :newcomment='newComment'
+            @write_post='write_post'
+            @blur_empty_post='blur_empty_post'
+            @add_post_btn_cancel='add_post_btn_cancel'
+            @add_post_btn_add='add_post_btn_add'
+        ></add-post>
+        ------------------------------------------------------------------------------------------
+
+        <modify-post
+            v-for='(i, index) in posts'
+            :key='i.id'
+            :id='index'
+            :posts='posts[index]'
+            :disable_comment_edit='disable_comment_edit[index]'
+            :sh_editpost_btns='sh_editpost_btns[index]'
+            @allow_edit_comment='allow_edit_comment'
+            @edit_comment='edit_comment'
+            @cancel_comment_btn_change='cancel_comment_btn_change'
+            @confirm_comment_btn_change='confirm_comment_btn_change'
+
+            :showtt='showTT[index]'
+            @hidett='hideTT'
+            @show_tooltip='show_tooltip'
+            :show_delete_menu='show_delete_menu'
+            @show_delete_confirm_menu='show_delete_confirm_menu'
+        ></modify-post>
+
+        <delete-menu
+            @delete_post='delete_post'
+            @cancel_delete='cancel_delete'
+            :show_delete_menu='show_delete_menu'
+        ></delete-menu>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
