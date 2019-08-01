@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https:/cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Components hooks</title>
+</head>
+<body>
+    <div id="app" class="container">
+
+    </div>
+
+<script>
+var testComponent = {
+    template: `
+            <span>
+                I'm test component
+            </span>
+        `,
+    data: function(){
+        return {
+            counter: 0
+        };
+    },
+    watch: {
+        counter(newValue){
+            console.log(newValue);
+        }
+    },
+
+    beforeCreated: function(){
+        this.counter = 1;
+    },
+    created: function(){
+        this.counter = 2;
+    },
+    beforeMounted: function(){
+        this.counter = 3;
+    },
+    mounted: function(){
+        this.counter = 4;
+    },
+    beforeDestroyed: function(){
+        this.counter = 5;
+    },
+    destroyed: function(){
+        this.counter = 6;
+    }
+};
+
+const vm = new Vue({
+    el: '#app',
+    components: {
+        testComponent,
+    },
+    template: `
+        <div>
+            <label>
+            <input type='checkbox'
+                v-model='visible'
+                Checked> Check it
+                <br>
+                <testComponent v-if='visible'></testComponent>
+            </label>
+        </div>
+        `,
+    data: function(){
+        return {
+            visible: true,
+        }
+    }
+    
+})
+</script>
+</body>
+</html>
