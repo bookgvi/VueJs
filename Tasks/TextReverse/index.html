@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Text reverse</title>
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #34495e;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10rem auto;
+    color: #fff;
+}
+.wrapper h2{
+    font-size: 2em;
+}
+.wrapper input {
+    padding: 5px 10px;
+    margin-top: 10px;
+    font-size: 1em;
+    border-radius: 2px;
+}
+.wrapper button {
+    background: #3498db;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1em;
+    letter-spacing: 0.2em;
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.wrapper button:hover {
+    background: #2980b9;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div id="app" class='wrapper'>
+        <h2>{{msg}}</h2>
+        <input type='text' placeholder='input some text' v-model='msg'>
+        <button @click='reverse'>Reverse message</button>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

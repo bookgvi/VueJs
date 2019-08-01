@@ -5,7 +5,7 @@ var inputBlock = {
     },
     template: `
         <div>
-        <label for='input'>{{field_key}}</label>
+            <label for='input' class='label'>{{field_key}}</label>
         <input type='text' :value='field_data'
             @input='$emit("edit", $event.target.value)'
             @focus ='$emit("get_focus", field_key)'
@@ -20,7 +20,7 @@ var reactiveBlock = {
     },
     template: `
         <div>
-        <span>{{field_data}}</span>
+        <input type='text' :value='field_data' disabled='true'>
         </div>
     `,
 
@@ -31,8 +31,8 @@ const vm = new Vue({
     data: {
         field: '',
         syncStatus1: true,
-        reactive: {Name: '1', Surname: '2', Age: '3', City: '4'},
-        nonReactive: {Name: '1', Surname: '2', Age: '3', City: '4'},
+        reactive: {Name: '', Surname: '', Age: '', City: ''},
+        nonReactive: {Name: '', Surname: '', Age: '', City: ''},
     },
     components: {
         'input_data': inputBlock,

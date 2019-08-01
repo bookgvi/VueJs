@@ -5,30 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Reactive Datas</title>
 </head>
 <body>
 <div id="app" class="container">
-    <div  class="input-data-block">
-        <input_data
-            v-for='(item, index) in reactive'
-            :key='index'
-            :field_key='index'
-            :field_data='item'
-            @edit='edit'
-            @get_focus='get_focus'
-        ></input_data>
-    </div>
-    <div class="reactive-data-block">
-            <span>Sync </span>
+        <div class="sync">
+            <span>Syncronization </span>
             <input type='checkbox' checked='syncStatus1' @change='sync'>
-
-        <reactive_data
-            v-for='item in nonReactive'
-            :key='item'
-            :field_data='item'
-        ></reactive_data>
-    </div>
+        </div>
+    <div class="all-data">
+        <div  class="input-data-block">
+            <input_data
+                v-for='(item, index) in reactive'
+                :key='index'
+                :field_key='index'
+                :field_data='item'
+                @edit='edit'
+                @get_focus='get_focus'
+            ></input_data>
+        </div>
+        <div class="reactive-data-block">
+            <reactive_data
+                v-for='(item, index) in nonReactive'
+                :key='index'
+                :field_data='item'
+            ></reactive_data>
+        </div>
+    </div>        
 </div>
 <script src="script.js"></script>
 </body>
