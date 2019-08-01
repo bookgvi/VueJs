@@ -37,7 +37,7 @@ Vue.component('modify-post',{
     template: `
         <div class='card__modify-post'>
             <div class='card__modify-post_comment'>
-                <input type=text :value='posts.comment' :disabled='disable_comment_edit'
+                <input type=text :value='posts.comment' :disabled='disable_comment_edit' 
                 @input='$emit("edit_comment", $event.target.value)'
                 @keyup.enter='$emit("confirm_comment_btn_change", id)'
                 @keyup.esc='$emit("cancel_comment_btn_change", id)'
@@ -57,15 +57,17 @@ Vue.component('modify-post',{
             </div>
             <div class='card__modify-post_other-data'>
                 <span>{{posts.author}} </span><span> {{posts.date}}  </span>
-                <span class='card__modify-post_edit'
-                    @click='$emit("show_tooltip", id)'
-                > v 
+                <span class='card__modify-post_edit'> 
+                        <button
+                            @click='$emit("show_tooltip", id)'
+                        >#</button> 
                     <div class="tooltip" v-if='showtt'
                         @mouseleave='$emit("hidett", id)'>
                     
                         <span class="tooltip_btn-edit-style" 
                             @click='$emit("allow_edit_comment",id)'
                         >Редактировать</span>
+                        
                         <span class="tooltip_btn-delete-style"
                             @click='$emit("show_delete_confirm_menu", id)'
                         >Удалить</span>
@@ -80,12 +82,15 @@ Vue.component('delete-menu',{
         show_delete_menu: Boolean
     },
     template:
-        `<div class="tooltip" v-if='show_delete_menu'>
+        `<div class="tooltip" v-if='show_delete_menu'
+            @keyup.enter='$emit("delete_post")'
+            @keyup.esc='$emit("cancel_delete")'
+        >
         <button class='card__post_button-style'
             @click='$emit("delete_post")'
         >Удалить</button>
 
-        <button class='card__post_button-style'
+        <button class='card__post_button-style' 
         @click='$emit("cancel_delete")'
         >Отмена</button>
         </div>
@@ -113,8 +118,8 @@ const vm = new Vue({
         deleteCommentNumber: 0,
         id: 1,
         posts:[
-            {id:0, comment: 'Взят в работу', author: 'Иванов', date: new Date().toTimeString()},
-            {id:1, comment: 'Думаю', author: 'Иванов', date: new Date().toTimeString()}
+            {id:0, comment: 'Взят в работу', author: 'Иванов', date: new Date().toUTCString()},
+            {id:1, comment: 'Думаю', author: 'Иванов', date: new Date().toUTCString()}
         ]
     },
     methods: {
@@ -133,7 +138,7 @@ const vm = new Vue({
         /////////////////////////////////////////// Добавление новой записи
         add_post_btn_add: function(){
             this.id++;
-            this.posts.unshift({id: this.id, comment: this.newComment, author: this.author, date: new Date().toTimeString()});
+            this.posts.unshift({id: this.id, comment: this.newComment, author: this.author, date: new Date().toUTCString()});
             this.newComment='';
             this.disable_comment_edit.unshift(true);        // Для независимого редактирования комментария
             this.sh_addpost_btns = false;
@@ -153,7 +158,6 @@ const vm = new Vue({
         allow_edit_comment: function(postNumber){
             Vue.set(this.disable_comment_edit, postNumber, !this.disable_comment_edit[postNumber]);
             Vue.set(this.sh_editpost_btns, postNumber, true);
-
         },
 
         //////////////////////////////////////// Вносим изменения в выбраный коментарий (показываем кнопки!)
@@ -162,7 +166,7 @@ const vm = new Vue({
         },
         ////////////////////////////////////// Сохраняем изменения
         confirm_comment_btn_change: function(postNumber){
-            this.posts[postNumber].date = new Date().toTimeString();
+            this.posts[postNumber].date = new Date().toUTCString();
             
             if(this.editComment)
                 this.posts[postNumber].comment = this.editComment;

@@ -6,10 +6,6 @@
     position: fixed;
     display: inline-block;
     z-index: 100;
-    /* подсказка должна перекрывать другие элементы */
-
-    /* padding: 5px 5px; */
-    /* красивости... */
 
     border: 1px solid #b3c9ce;
     border-radius: 4px;
@@ -17,7 +13,7 @@
     font: italic 14px/1.3 sans-serif;
     color: #333;
     background: #fff;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+    box-shadow: 3px 5px 8px rgba(0, 0, 0, .3);
 
     cursor: pointer;
   }
@@ -26,5 +22,5 @@
     padding: 10px 10px;
   }
   .tooltip span:hover {
-    background-color: rgba(0, 204, 255, 0.507);
+    background-color: rgba(136, 136, 136, 0.26);
   }
