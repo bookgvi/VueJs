@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Learning components!</title>
+</head>
+<body>
+    <template id='form'>
+        <div>
+            <label for="name">What is you name?</label>
+            <input type="text" id='name' :value='value' @input='hInput'>
+        </div>
+    </template>
+
+    <template id='hello'>
+        <h1>{{msg}}{{user}}</h1>
+    </template>
+
+    <template id="greetings">
+        <div>
+            <form-component v-model='user'></form-component>
+            <hello-component :user='user'></hello-component>
+        </div>
+    </template>
+
+    <div id="app">
+        <greetings-component></greetings-component>
+    </div>
+
+
+<script>
+Vue.component('form-component',{
+    props: ['value'],
+    template: '#form',
+    methods: {
+        hInput(e){
+            this.$emit('input', e.target.value);
+        }
+    },
+});
+
+Vue.component('hello-component', {
+    props: ['user'],
+    template: '#hello',
+    data(){
+        return {
+            msg: 'Holly Vue, '
+        }
+    }
+});
+
+Vue.component('greetings-component',{
+    template: '#greetings',
+    data(){
+        return {
+            user: 'Holly priest'
+        }
+    }
+});
+
+const vm = new Vue({
+    el: '#app'   
+});
+</script>
+</body>
+</html>
