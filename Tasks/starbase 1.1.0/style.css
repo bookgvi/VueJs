@@ -1,0 +1,9 @@
+body{
+    background: url('./img/bg.png');
+    background-size: 100%;
+}
+#app{
+    font-family: Arial;
+    color: #fff;
+    text-align: center;
+}
