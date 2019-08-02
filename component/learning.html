@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Learning components!</title>
+</head>
+<body>
+<template id="holly">
+    <div >{{msg}}{{user}}</div>
+</template>
+
+<div id="app" class="holly">
+    <holly :user='user'></holly>
+</div>
+
+<script>
+Vue.component('holly',{
+    props: ['user'],
+    template: '#holly',
+    data(){
+        return {
+            msg: 'Holly Vue! I\'m you '
+        }
+    } 
+});
+
+const vm = new Vue({
+    el: '#app',
+    data: {
+        user: 'preist'
+    }
+});
+    
+</script>
+</body>
+</html>
