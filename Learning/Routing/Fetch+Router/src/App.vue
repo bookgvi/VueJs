@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <router-link to='/master/package.json'> JSON</router-link> |
-        <router-link to='/master/package-lock.json'>Lock JSON</router-link>
+        <router-link to='/src/html/imageGalery.html'>Gallery</router-link> |
+        <router-link to='/football'>Fake football</router-link>
         <router-view></router-view>
     </div>
 </template>

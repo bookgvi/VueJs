@@ -1,15 +1,12 @@
 <template>
-    <div> {{page}}</div>
+    <div id='example' ref='div'></div>
 </template>
 
 <script>
 export default {
     data(){
         return {
-            page: this.$route.params.fetch,
-            variant: ['cities.json','package-lock.json'],
-            url: 'https://raw.githubusercontent.com/smelukov/loftschool-example/master/package.json',
-            url2: 'https://raw.githubusercontent.com/smelukov/loftschool-example/master/package-lock.json'
+            page: this.$route.params.page,
         }
     },
     watch: {
@@ -17,12 +14,15 @@ export default {
     },
     methods: {
         fetchPage() {
-            this.page = this.$route.params.fetch;
-            fetch(`https://raw.githubusercontent.com/smelukov/loftschool-example/master/${this.page}`, {
+            fetch(`/src/html/${this.page}`,{
                 method: 'GET'
-            }).then(response => response.json())
-              .then(json => this.page = json);
-        }
+            })
+            .then(response => response.text())
+            .then(html => this.$refs.div.innerHTML = html);
+        },
+    },
+    mounted() {
+        this.fetchPage();
     }
 }
 </script>
