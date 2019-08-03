@@ -1,0 +1,33 @@
+.card-body-titles {
+    color: green;
+}
+.form {
+    border-top: 1px solid rgb(220, 220, 220);
+    border-bottom: 1px solid rgb(220, 220, 220);
+}
+.form .form-group .form-add_new{
+    outline: none;
+    border: 0;
+    padding: 0;
+    background-color: white;
+}
+.form .for-group .form-btns {
+}
+
+.card-edit-post-btn, .card-edit-post-btn:active, .card-edit-post-btn:focus, .sub-menu, .sub-menu:active, .sub-menu:focus {
+    position: relative;
+    border: none;
+    outline: none;
+    background-color: #fff;
+
+}
+#edit {
+    outline: none;
+    border: 0;
+    padding: 0;
+    background-color: white;
+}
+
+#edit_delete{
+    position: relative;
+}
