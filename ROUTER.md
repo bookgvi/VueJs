@@ -51,10 +51,12 @@ Type: {{type}}
 </template>
 
 <script>
-data(){
-  return {
-     type: this.$route.params.type
-  }
+export default{
+   data(){
+      return {
+         type: this.$route.params.type
+      }
+   }
 }
 </script>
 
