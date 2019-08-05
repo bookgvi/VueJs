@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <form-items :users='users'></form-items>
+        <form-show
+            v-for='(item, index) in users'
+            :key='index'
+            :users='users'
+            :index='index'
+        ></form-show>
+    </div>
+
+<script>
+    Vue.component('form-items',{
+        data() {
+            return {
+                user: {name:'Sonya', age:'18'}
+            }
+        },
+        props: ['users'],
+        template: ` <div>
+                    <input type='text' v-model="user.name">
+                    <input type='text' v-model="user.age">
+                    <button @click='addUser'>Add user</button>
+                    </div>
+        `,
+        methods: {
+            addUser() {
+                this.users.push({name: this.user.name, age: this.user.age});
+            }
+        }
+    });
+
+    Vue.component('form-show',{
+        props: ['users', 'index'],
+        template: `
+            <div>
+            <span> {{users[index].name}} {{users[index].age}} </span>
+            <button @click='users.splice(index,1)'>&times;</button>
+            </div>
+        `,
+    });
+
+const vm = new Vue({
+    el: '#app',
+    data: {
+        users: [
+                {name: 'Bob', age: 22}, 
+                {name: 'Taras', age: 44},
+            ]
+    },
+});
+</script>
+</body>
+</html>
