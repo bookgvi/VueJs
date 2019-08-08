@@ -33,6 +33,12 @@
 <style scoped>
   .container {
     text-align: left;
+    border-left: 5px solid #00ac00;
+    padding-left: 1em;
+  }
+
+  .card {
+    border: none;
   }
 
   .card-title, .card-subtitle {

@@ -15,6 +15,7 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
   export default {
       data(){
           return {
@@ -28,9 +29,13 @@
             this.btnVisible = false;
           },
           save(){
-              this.$store.commit('ADD_COMMENT', this.newText);
+              if(this.newText)
+                this.addComment(this.newText);
               this.cancel();
           },
+          ...mapActions([
+              'addComment'
+          ]),
       },
   }
 </script>
@@ -43,5 +48,8 @@
     border-bottom: 1px solid #777777;
     border-radius: 0px;
     width: 100%;
+  }
+  button {
+    width: 30%;
   }
 </style>

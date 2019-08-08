@@ -1,1 +1,3 @@
 export const ADD_COMMENT = 'ADD_COMMENT'
+export const CHANGE_COMMENT = 'CHANGE_COMMENT'
+export const DELETE_COMMENT = 'DELETE_COMMENT'
