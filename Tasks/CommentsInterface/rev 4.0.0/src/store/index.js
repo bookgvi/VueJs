@@ -10,9 +10,11 @@ const state = {
   ],
 };
 
-import {getters} from './getters'
+import {getters} from './getters';
+import {mutations} from './mutations'
 
 export default new Vuex.Store({
   state,
   getters,
+  mutations,
 });

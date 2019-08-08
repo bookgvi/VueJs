@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="mb-3">
     <h6 class="card-text">{{posts[index].title}}</h6>
     <span class="card-text text-muted" >{{posts[index].author}}, {{posts[index].date}}</span>
   </div>
