@@ -9,7 +9,7 @@
       <input type="text" class="form-control" v-model="event.title" />
     </div>
     <div class="form-group">
-      <label for="">Description</label>
+      <label>Description</label>
       <input type="text" class="form-control" v-model="event.description" />
     </div>
     <div class="form-group">
@@ -32,7 +32,7 @@
           return {
               event:
                   { title: '', description: '', date: '', location: '', email: '' },
-              showForm: true,
+              showForm: false,
           }
       },
       methods: {

@@ -7,4 +7,7 @@ export const actions = {
   getOut: ({commit}) => {
     commit(types.SIGN_OUT);
   },
+  setEvent: ({commit}, event_payload) => {
+    commit(types.SET_EVENT, event_payload);
+  }
 };

@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="container">
     <h3>Event Dashboard</h3>
     <button class="btn btn-danger btn-sm signout-btn"
       @click="signOut"
@@ -7,15 +7,21 @@
     <hr>
     <Addevent />
     <hr>
-    {{$store.state}}
+      <div class="row">
+        <Eventitem class="card col-sm-3 mt-1"
+          v-for="(item, index) in this.$store.state.events"
+          :event="item"
+        />
+      </div>
     <p>{{error.message}}</p>
   </div>
 </template>
 
 <script>
-  import {firebaseApp} from '../firebaseApp'
+  import {firebaseApp, eventsRef} from '../firebaseApp'
   import {mapActions} from 'vuex'
   import Addevent from './Addevent'
+  import Eventitem from './Eventitem'
   export default {
       data() {
           return {
@@ -25,7 +31,17 @@
           }
       },
       components: {
-          Addevent
+          Addevent,
+          Eventitem
+      },
+      mounted() {
+          eventsRef.on('value', snap => {
+              let events = [];
+              snap.forEach(event => {
+                  events.push(event.val())
+              });
+              this.setEvent(events);
+          });
       },
       methods: {
           signOut() {
@@ -34,7 +50,8 @@
                   .catch(error => {this.error = error});
           },
           ...mapActions([
-              'getOut'
+              'getOut',
+              'setEvent'
           ]),
       }
   }

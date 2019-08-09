@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <h3>Sign Up</h3>
-    <div class="form-group">
+    <div class="form-group" @keyup.enter="signUp">
       <input type="text" class="form-control" placeholder="email" v-model="email" />
       <input type="password" placeholder="password" class="form-control" v-model="password" />
       <br>
