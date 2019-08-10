@@ -8,7 +8,7 @@
     <div class="form-group row">
       <label for="timeout" class="col-form-label ml-2">Set timeout (ms): </label>
       <input type="text" class="form-control ml-2" id="timeout" v-model="payload.timeout">
-      <label for="increment" class="col-form-label ml-2">Set timeout (ms): </label>
+      <label for="increment" class="col-form-label ml-2">Set iteration step: </label>
       <input type="text" class="form-control ml-2" id="increment" v-model="payload.incCount">
 
       <button class="btn btn-dark btn-sm ml-2" @click.prevent="incCounter(payload)">Increment</button>
