@@ -4,6 +4,7 @@ import Home from './Components/Home'
 import Cars from './Components/Cars'
 import Car from './Components/Car'
 import Carinfo from './Components/Carinfo'
+import Errors from './Components/Error'
 
 
 export default new VueRouter({
@@ -14,7 +15,8 @@ export default new VueRouter({
     {path: '/car/:id', component: Car,
       children: [
         {path: 'full', component: Carinfo, name: 'Carinfo'}
-      ]
-    }
+      ]},
+    {path: '/none', redirect: '/'},
+    {path: '*', component: Errors}
   ],
 })

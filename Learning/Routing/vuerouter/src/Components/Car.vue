@@ -5,7 +5,9 @@
       @click="backToCars"
     >Back</button>
     <router-link tag="button" class="btn btn-info"
-      :to="{name: 'Carinfo', params: {id}, query: {name: 'BMW', year: 200+id}}"
+      :to="{name: 'Carinfo',
+            params: {id},
+            query: {name: carModels[id-1], year: 201+id}}"
     >Car info</router-link>
     <hr>
     <router-view></router-view>
@@ -16,7 +18,8 @@
   export default{
       data(){
           return {
-              id: this.$route.params.id
+              id: this.$route.params.id,
+              carModels: ['BMW','Mercedes','Toyota','Dodge','Bentley'],
           }
       },
       watch: {
@@ -29,6 +32,11 @@
             backToCars(){
                 this.$router.push('/cars')
             }
-      }
+      },
+      beforeRouteLeave(to, fromR, next){
+          const answer = window.confirm('Are you sure?');
+          if(answer) next();
+          else next(false);
+      },
   }
 </script>
