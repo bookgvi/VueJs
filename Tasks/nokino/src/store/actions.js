@@ -14,6 +14,9 @@ export const actions = {
       .catch((msg)=>console.error('Catched... ', new Error(msg)));
   },
 
+  setForwardBtnStatus: ({commit}, payload) => commit(types.SET_FORWARD_BTN_STATUS, payload),
+  setBackwardBtnStatus: ({commit}, payload) => commit(types.SET_BACKWARD_BTN_STATUS, payload),
+
   setPage: (context, payload) => {
     context.commit(types.SET_FILMS_PAGE, payload);
   },
@@ -23,6 +26,7 @@ export const actions = {
       method: 'GET'
     })
       .then(response => response.json())
-      .then(json => console.log(json))
+      // .then(json => console.log(json))
+      .catch(err => console.error('Catched...', new Error(err)));
   }
 };

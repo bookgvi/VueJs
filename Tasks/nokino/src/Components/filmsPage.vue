@@ -1,16 +1,14 @@
 <template>
   <div id="app" class="container">
-    <div class="mt-5">
       <div class="row">
         <film-card class="film-card"
           v-for="(item, index) in 19"
           :key="index"
-          :filmPoster = 'getFilmDetails.filmPoster[item-1]'
+          :filmPoster = 'getFilmDetails.filmPoster200[item-1]'
           :filmTitle = 'getFilmDetails.filmTitle[item-1]'
           :id="item-1"
         />
       </div>
-    </div>
   </div>
 </template>
 
@@ -27,9 +25,6 @@
       data(){
           return {
           }
-      },
-      created(){
-          this.fetchFilmsInfo();
       },
       beforeRouteUpdate(to, from, next){
           this.fetchFilmsInfo();
@@ -50,7 +45,7 @@
 
 <style scoped>
   .container{
-    box-sizing: content-box;
+    text-align: center;
   }
   .film-card{
     cursor: pointer;

@@ -1,11 +1,10 @@
 <template>
-  <div class="col-md">
-    <div class="card-body"
+  <div class="col-md"
       @click="filmDetail"
     >
-      <h6 class="card-title">{{filmTitle}}</h6>
-      <img class='card-text' :src='filmPoster'>
-    </div>
+      <img class='mb-2' :src='filmPoster'>
+    <h6 class="card-title">{{filmTitle}}</h6>
+
     <router-view />
   </div>
 
@@ -27,10 +26,9 @@
         },
         methods: {
             ...mapActions([
-                'fetchFilmDetails'
+                'fetchFilmDetails',
             ]),
             filmDetail(){
-                this.fetchFilmDetails(this.id);
                 this.$router.push('/film/' + this.id)
             }
         },

@@ -4,6 +4,9 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 const state = {
+  btnPrevPageStatus: false,
+  btnNextPageStatus: false,
+
   baseImgSrc: 'https://image.tmdb.org/t/p/',
   rawObj: {},
   filmObj: {},
@@ -11,11 +14,10 @@ const state = {
 
   filmDetails: {
     filmTitle: [],
-    filmPoster: [],
+    filmPoster200: [],
+    filmPoster500: [],
     filmOverview: [],
     id: [],
-
-
   },
 };
 
