@@ -6,10 +6,12 @@ export const mutations = {
     state.filmDetails.filmPoster = [];
     state.filmDetails.filmTitle = [];
     state.filmDetails.filmOverview = [];
+    state.filmDetails.id = [];
     for (let key in state.filmObj){
-      state.filmDetails.filmPoster.push(state.baseImgSrc + state.filmObj[i].poster_path);
+      state.filmDetails.filmPoster.push(state.baseImgSrc + 'w200' + state.filmObj[i].poster_path);
       state.filmDetails.filmTitle.push(state.filmObj[i].title);
       state.filmDetails.filmOverview.push(state.filmObj[i].overview);
+      state.filmDetails.id.push(state.filmObj[i].id);
       i++;
     }
   },
@@ -23,4 +25,6 @@ export const mutations = {
     state.rawObj = payload;
     state.filmObj = payload.results;
   },
+
+  [types.GET_DETAIL_FILM_INFO]: (state) => {}
 };

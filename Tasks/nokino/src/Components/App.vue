@@ -1,42 +1,47 @@
 <template>
-  <div id="app" class="container">
-    <h2 class="mt-9">{{getFilmDetails.filmTitle}}</h2>
-    <hr>
-    <div class="">
-      <button class="btn btn-dark mb-2 mr-2" @click="fetchFilmsInfo(-1)" v-if="getFilmDetails.previousFilmTitle">{{getFilmDetails.previousFilmTitle}}</button>
-      <button class="btn btn-dark mb-2" @click="fetchFilmsInfo(1)" v-if="getFilmDetails.nextFilmTitle">{{getFilmDetails.nextFilmTitle}}</button>
-      <div class="row">
-        <div class="col-md">
-          <img :src='getFilmDetails.filmPoster' alt="" >
-        </div>
-        <div class="col-md">
-          {{getFilmDetails.filmOverview}}
-        </div>
-      </div>
+  <div id="app" class="container mt-5">
+    <div class="btns">
+      <button class="btn btn-light mb-2 mr-2" @click="changePage(-1)" v-if="btnPrevPageStatus">Prev</button>
+      <button class="btn btn-light mb-2" @click="changePage(1)" v-if="btnNextPageStatus">Next</button>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import {mapActions} from 'vuex'
   import {mapGetters} from 'vuex'
-  export default{
+  import {mapActions} from 'vuex'
+  export default {
       data(){
           return {
           }
       },
-        created() {
-              this.fetchFilmsInfo(1);
-          },
       computed: {
           ...mapGetters([
-              'getFilmDetails'
+              'getCurrentFilmPage',
           ]),
+          btnNextPageStatus() {
+              return this.getCurrentFilmPage+1;
+          },
+          btnPrevPageStatus() {
+              return this.getCurrentFilmPage-1;
+          },
       },
       methods: {
           ...mapActions([
-              'fetchFilmsInfo'
+              'fetchFilmsInfo',
+              'setPage'
           ]),
-      }
+          changePage(i){
+              this.setPage(i);
+              this.$router.push('/page/'+ this.getCurrentFilmPage)
+          }
+      },
   }
 </script>
+
+<style scoped>
+  .btns{
+    text-align: center
+  }
+</style>

@@ -18,4 +18,11 @@ export const actions = {
     context.commit(types.SET_FILMS_PAGE, payload);
   },
 
+  fetchFilmDetails: (context, payload) => {
+    fetch(`https://api.themoviedb.org/3/movie/${payload}?api_key=382fdc20a456036a67a5e56974cb5016`,{
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(json => console.log(json))
+  }
 };

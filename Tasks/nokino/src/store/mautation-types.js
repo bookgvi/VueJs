@@ -1,3 +1,4 @@
 export const GET_FILM_INFO = 'GET_FILM_INFO';
 export const GET_FILM_DETAILS = 'GET_FILM_DETAILS';
 export const SET_FILMS_PAGE = 'SET_FILMS_PAGE';
+export const GET_DETAIL_FILM_INFO = 'GET_DETAIL_FILM_INFO'

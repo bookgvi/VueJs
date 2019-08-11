@@ -5,9 +5,11 @@ import App from './Components/App'
 
 Vue.use(VueRouter);
 
-import filmPage from './Components/filmPage'
+import filmPage from './Components/filmsPage'
+import filmDetails from './Components/filmDetails'
 const routes = [
-  {path: '/page/:num', component: filmPage}
+  {path: '/page/:num', component: filmPage},
+  {path: '/film/:id', component: filmDetails}
 ];
 
 const router = new VueRouter({
