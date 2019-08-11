@@ -4,16 +4,15 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 const state = {
-  baseImgSrc: 'https://image.tmdb.org/t/p/w400',
-  filmObj: '',
-  filmCounter: -1,
+  baseImgSrc: 'https://image.tmdb.org/t/p/w200',
+  rawObj: {},
+  filmObj: {},
+  filmPage: 2,
 
   filmDetails: {
-    filmTitle: '',
-    filmPoster: '',
-    filmOverview: '',
-    nextFilmTitle: '',
-    previousFilmTitle: '',
+    filmTitle: [],
+    filmPoster: [],
+    filmOverview: [],
   },
 };
 

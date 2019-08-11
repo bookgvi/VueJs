@@ -1,3 +1,3 @@
 export const GET_FILM_INFO = 'GET_FILM_INFO';
 export const GET_FILM_DETAILS = 'GET_FILM_DETAILS';
-export const SET_FILM_COUNTER = 'SET_FILM_COUNTER';
+export const SET_FILMS_PAGE = 'SET_FILMS_PAGE';

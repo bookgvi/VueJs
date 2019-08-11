@@ -1,18 +1,21 @@
 import * as types from './mautation-types';
 
 export const actions = {
-  fetchFilmsInfo: ({commit}, payload) => {
-    fetch('https://api.themoviedb.org/3/discover/movie?api_key=382fdc20a456036a67a5e56974cb5016',{
+  fetchFilmsInfo: (context) => {
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=382fdc20a456036a67a5e56974cb5016&page=${context.state.filmPage}`,{
       method: 'GET',
       // mode: 'no-cors',
     })
       .then(response => response.json())
-      .then(json => commit(types.GET_FILM_INFO, json.results))
+      .then(json => context.commit(types.GET_FILM_INFO, json))
       .then(() => {
-        commit(types.GET_FILM_DETAILS);
+        context.commit(types.GET_FILM_DETAILS);
       })
-      .catch(()=>console.error('...Catched load img error'));
-      commit(types.SET_FILM_COUNTER, payload)
-  }
+      .catch((msg)=>console.error('Catched... ', new Error(msg)));
+  },
 
-}
+  setPage: (context, payload) => {
+    context.commit(types.SET_FILMS_PAGE, payload);
+  },
+
+};
