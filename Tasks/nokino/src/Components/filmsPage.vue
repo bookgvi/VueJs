@@ -2,7 +2,7 @@
   <div id="app" class="container">
       <div class="row">
         <film-card class="film-card"
-          v-for="(item, index) in 19"
+          v-for="(item, index) in 20"
           :key="index"
           :filmPoster = 'getFilmDetails.filmPoster200[item-1]'
           :filmTitle = 'getFilmDetails.filmTitle[item-1]'
