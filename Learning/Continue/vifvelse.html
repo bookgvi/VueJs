@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>State</title>
+</head>
+<body>
+<div class="container" id="app">
+
+    <div class="">
+
+        <div v-if="value1">
+            Top msg
+        </div>
+        <button class="btn" @click="chState" v-if="value1">Press</button>
+    </div>
+
+</div>
+
+<script>
+    const testTemplate = {
+        template: `
+        <div>
+            Test msg
+        </div>`,
+        mounted(){
+            console.log('Mounted... from testTemplate')
+        },
+
+    };
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            value1: 1,
+        },
+        components: {
+            'test-template': testTemplate,
+        },
+        methods: {
+            chState(){
+                this.value1=!this.value1;
+                setTimeout(()=>{
+                    this.value1=!this.value1;
+                },2000);
+            },
+        },
+    });
+</script>
+
+</body>
+</html>
