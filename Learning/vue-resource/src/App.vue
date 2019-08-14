@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
       <h2 class="mt-3">Holly Vue!</h2>
       <b-form>
         <b-form-group label="Car name" label-for="carName">

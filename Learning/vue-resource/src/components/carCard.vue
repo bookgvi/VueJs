@@ -2,15 +2,15 @@
   <div class="col-md-3">
     <div class="card mb-2">
       <div class="card-body">
+        <button
+          @click="$emit('deleteThisCar', cardId)"
+          class="close"
+        >&times;</button>
         <h6 class="card-text">
-          {{ name }}
-          <button
-            @click="$emit('deleteThisCar', cardId)"
-            class="close"
-          >&times;</button>
+          Model: {{ name }}
         </h6>
         <h6 class="card-text">
-          {{ year }}
+         Year: {{ year }}
         </h6>
       </div>
     </div>
