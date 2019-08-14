@@ -11,14 +11,14 @@ export const actions = {
       .then(json => {
         context.commit(types.GET_CARS, json)
       })
-      .catch(err => console.error('Catched... Get status = ', err.ok))
+      .catch(err => console.error('Catched... Get status = ', err.name, err.message))
   },
   deleteCar: async (context, payload) => {
     context.commit(types.SET_RESOURCE, Vue.resource(`cars/${payload}`))
     try {
       await context.state.resource.remove({})
     } catch (err) {
-      console.error('Catched...')
+      console.error('Catched... ', err.name, err.message)
     }
     context.commit(types.SET_RESOURCE, Vue.resource(`cars`))
     context.commit(types.DELETE_CAR, payload)
