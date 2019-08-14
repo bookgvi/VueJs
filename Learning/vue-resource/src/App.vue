@@ -40,8 +40,12 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'returnAllCars'
+      'returnAllCars',
+      'resource'
     ])
+  },
+  created () {
+    this.setResource(this.$resource('cars'))
   },
   methods: {
     async createCar () {
@@ -50,7 +54,7 @@ export default {
         year: this.carYear
       }
       try {
-        await this.$http.post('http://localhost:3000/cars', newCar)
+        await this.resource.save({}, newCar)
       } catch (err) {
         console.error('Catched... Send status = ', err.ok)
       }
@@ -58,11 +62,11 @@ export default {
     },
     ...mapActions([
       'getCars',
-      'deleteCar'
+      'deleteCar',
+      'setResource'
     ]),
     async deleteThis (id) {
       this.deleteCar(id)
-      // this.getCars()
     }
   }
 }

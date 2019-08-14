@@ -21,6 +21,7 @@ Vue.use(FormPlugin)
 Vue.use(FormInputPlugin)
 Vue.use(ButtonPlugin)
 
+Vue.http.options.root = 'http://localhost:3000/'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

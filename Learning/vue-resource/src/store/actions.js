@@ -2,20 +2,25 @@ import * as types from './mutation-types'
 import Vue from 'vue'
 
 export const actions = {
+  setResource: ({commit}, payload) => {
+    commit(types.SET_RESOURCE, payload)
+  },
   getCars: (context) => {
-    Vue.http.get('http://localhost:3000/cars')
+    context.state.resource.get({})
       .then(response => response.json())
       .then(json => {
         context.commit(types.GET_CARS, json)
       })
       .catch(err => console.error('Catched... Get status = ', err.ok))
   },
-  deleteCar: async ({commit}, payload) => {
+  deleteCar: async (context, payload) => {
+    context.commit(types.SET_RESOURCE, Vue.resource(`cars/${payload}`))
     try {
-      await Vue.http.delete(`http://localhost:3000/cars/${payload}`)
+      await context.state.resource.remove({})
     } catch (err) {
       console.error('Catched...')
     }
-    commit(types.DELETE_CAR, payload)
+    context.commit(types.SET_RESOURCE, Vue.resource(`cars`))
+    context.commit(types.DELETE_CAR, payload)
   }
 }
