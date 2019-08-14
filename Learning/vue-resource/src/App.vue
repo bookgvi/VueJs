@@ -1,25 +1,16 @@
 <template>
   <div id="app">
-    <div class="container">
       <h2 class="mt-3">Holly Vue!</h2>
-      <form>
-        <div class="form-group">
-          <label for="carName">
-            Car name
-          </label>
-          <input id="carName" name="carName" type="text" v-model.trim="carName" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="carYear">
-            Car year
-          </label>
-          <input id="carYear" name="carYear" type="text" v-model="carYear" class="form-control">
-        </div>
-        <div class="form-group">
-          <button type="submit" @click.prevent="createCar" class="btn btn-success">Create car</button>
-          <button @click.prevent="getCars" class="btn btn-primary">Get cars</button>
-        </div>
-      </form>
+      <b-form>
+        <b-form-group label="Car name" label-for="carName">
+          <b-form-input id="carName" name="carName" type="text" v-model.trim="carName"></b-form-input>
+        </b-form-group>
+        <b-form-group label="Car year" label-for="carYear">
+          <b-form-input id="carYear" name="carYear" type="text" v-model="carYear"></b-form-input>
+        </b-form-group>
+          <b-button type="submit" @click.prevent="createCar" variant="success">Create car</b-button>
+          <b-button @click.prevent="getCars" variant="primary">Get cars</b-button>
+      </b-form>
       <hr>
       <div class="row">
         <car-card
@@ -31,7 +22,6 @@
           @deleteThisCar="deleteThis"
         ></car-card>
       </div>
-    </div>
   </div>
 </template>
 
@@ -67,15 +57,12 @@ export default {
       this.getCars()
     },
     ...mapActions([
-      'getCars'
+      'getCars',
+      'deleteCar'
     ]),
     async deleteThis (id) {
-      try {
-        await this.$http.delete(`http://localhost:3000/cars/${id}`)
-      } catch (err) {
-        console.error('Catched... Error deleting car')
-      }
-      this.getCars()
+      this.deleteCar(id)
+      // this.getCars()
     }
   }
 }
