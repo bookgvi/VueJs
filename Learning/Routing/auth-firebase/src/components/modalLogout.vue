@@ -5,8 +5,8 @@
         Are you sure?
       </h4>
       <div class="modal__btn-group">
-        <button @click="$emit('signOut')" class="class-button class-button_yes">Yes</button>
-        <button @click="$emit('closeModal')" class="class-button class-button_no">No</button>
+        <button @click="signOut" class="class-button class-button_yes">Yes</button>
+        <button @click="closeModal" class="class-button class-button_no">No</button>
       </div>
     </div>
     <div class="modalOverlay"></div>
@@ -14,7 +14,17 @@
 </template>
 
 <script>
-export default {}
+import { firebaseApp } from '../firebase'
+export default {
+  methods: {
+    closeModal () {
+      this.$router.go(-1)
+    },
+    signOut () {
+      firebaseApp.auth().signOut()
+    }
+  }
+}
 </script>
 
 <style scoped>

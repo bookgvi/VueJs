@@ -2,43 +2,31 @@
   <div class="">
     <h2>
       This is Dashboard
-      <button @click="isSignout">Sign Out</button>
-      <modal-sign-out
-        v-if="modalSignOut.isShow"
-        :isShow='modalSignOut.isShow'
-        @closeModal="closeModal"
-        @signOut="signOut"
-      />
+      <button @click="isSignout" class="btn">Sign Out</button>
+      <router-view />
     </h2>
   </div>
 </template>
 
 <script>
-import { firebaseApp } from '../firebase'
-import modalSignout from './modalSignout'
 export default {
-  data: () => ({
-    modalSignOut: {
-      isShow: false
-    }
-  }),
-  components: {
-    'modal-sign-out': modalSignout
-  },
   methods: {
     isSignout () {
-      this.modalSignOut.isShow = true
-    },
-    closeModal () {
-      this.modalSignOut.isShow = false
-    },
-    signOut () {
-      firebaseApp.auth().signOut()
+      this.$router.replace({name: 'logout'})
+        .catch(() => {})
     }
   }
 }
 </script>
 
 <style scoped>
-
+  .btn1 {
+    right: 100%;
+    background-color: #ff005d;
+    border: 2px solid #ff005d;
+  }
+  .btn1:hover {
+    border: 2px solid #a90042;
+    cursor: pointer;
+  }
 </style>

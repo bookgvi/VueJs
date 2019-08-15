@@ -1,0 +1,22 @@
+h2 {
+  text-align: center;
+}
+.btn {
+  position: absolute;
+  color: #ffffff;
+  background-color: #1a90d1;
+  border: 2px solid #1a90d1;
+  padding: 15px;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  left: 50%;
+  transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+}
+.btn:hover {
+  border: 2px solid #00008a;
+  cursor: pointer;
+}

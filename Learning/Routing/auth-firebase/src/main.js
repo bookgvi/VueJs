@@ -9,6 +9,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
       .catch((err) => console.error('Catched...', new Error(err)))
   } else {
     router.replace({name: 'dashboard'})
+      .catch((err) => console.error('Catched...', new Error(err)))
   }
 })
 
