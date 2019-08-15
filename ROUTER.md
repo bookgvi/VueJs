@@ -1,11 +1,11 @@
 =======================================================
-https://router.vuejs.org/ru/guide/#javascript
+https://index.vuejs.org/ru/guide/#javascript
 =======================================================
 
-> vue init webpack-simple starbase-router
-> cd starbase-router
+> vue init webpack-simple starbase-index
+> cd starbase-index
 > npm install
-> npm install vue-router --save
+> npm install vue-index --save
 > npm run dev
 
 > Create main.js and App.vue
@@ -22,14 +22,14 @@ new Vue({
 ///////////////////////// App.vue:
 <template>
    <div id='app'>
-	<h3>Starbase router </h3>
+	<h3>Starbase index </h3>
    </div>
 </template>
 
 
 ////////////////////////// main.js
 import Vue from 'vue'
-import VueRouter from 'vue-router' // (*)
+import VueRouter from 'vue-index' // (*)
 
 Vue.use(VueRouter);   // (**)
 
@@ -62,7 +62,7 @@ export default{
 
 ////////////////////// main.js
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-index'
 
 Vue.use(VueRouter);
 
@@ -73,13 +73,13 @@ const routes = [
 	{ path: 'data/:type', component: Data } // (**)
 ];
 
-const router = new VueRouter({  // (***)
+const index = new VueRouter({  // (***)
 	routes			// (***)
 })				// (***)
 
 new Vue({
   el: '#app',
-  router,		// (****)
+  index,		// (****)
   render: h=> h(App)
 })
 

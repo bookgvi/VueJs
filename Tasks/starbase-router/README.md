@@ -1,4 +1,4 @@
-# starbase-router
+# starbase-index
 
 > A Vue.js project
 
