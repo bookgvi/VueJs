@@ -20,12 +20,12 @@ export default {
 </script>
 
 <style scoped>
-  .btn1 {
+  .btn {
     right: 100%;
     background-color: #ff005d;
     border: 2px solid #ff005d;
   }
-  .btn1:hover {
+  .btn:hover {
     border: 2px solid #a90042;
     cursor: pointer;
   }

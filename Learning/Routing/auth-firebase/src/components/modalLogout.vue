@@ -18,7 +18,7 @@ import { firebaseApp } from '../firebase'
 export default {
   methods: {
     closeModal () {
-      this.$router.go(-1)
+      this.$router.replace({name: 'dashboard'})
     },
     signOut () {
       firebaseApp.auth().signOut()
