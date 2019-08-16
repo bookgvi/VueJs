@@ -2,6 +2,9 @@ import Vue from 'vue'
 import { router } from './router'
 import { firebaseApp } from './firebase'
 import App from './components/App'
+import style from '../index.css'
+
+Vue.use(style)
 
 firebaseApp.auth().onAuthStateChanged(user => {
   if (!user) {

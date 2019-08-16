@@ -21,9 +21,9 @@ export default {
 
 <style scoped>
   .btn {
-    right: 100%;
-    background-color: #ff005d;
-    border: 2px solid #ff005d;
+    top: 15%;
+    background-color: #ff0000;
+    border: 2px solid #ff0000;
   }
   .btn:hover {
     border: 2px solid #a90042;
