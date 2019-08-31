@@ -41,6 +41,12 @@ export default {
       return `$${value.toFixed(2)}`;
     }
   },
+  created () {
+    this.eventBus.$on('finish', p => {
+      this.products[p.id - 1].name = p.name
+      this.products[p.id - 1].price = p.price
+    })
+  },
   methods: {
     createNew() {
     },

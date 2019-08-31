@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container-fluid">
 <!--    <img alt="Vue logo" src="./assets/logo.png">-->
-    <div class="row mt-5">
+    <div class="row mt-5 align-items-end">
       <div class="col-sm-8">
         <product-display />
       </div>

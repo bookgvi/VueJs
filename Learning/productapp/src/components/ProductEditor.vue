@@ -12,7 +12,7 @@
 
 <script>
 import Vue from 'vue'
-import EditorField from "./EditorField";
+import EditorField from "./EditorField"
 export default {
   data: () => ({
     localBus: new Vue(),
@@ -36,13 +36,23 @@ export default {
   provide: function () {
       return {
         fields: this.fields,
-        editingEventBus: this.localBus,
-        sourceForLabel: (value) => `Enter ${ value }:`
+        sourceForLabel: (value) => `Enter ${ value }:`,
+        editingEventBus: this.localBus
       }
   },
-  mounted () {
+  created () {
     this.eventBus.$on('edit', this.startEdit)
     this.eventBus.$on('create', this.startCreate)
+    this.localBus.$on('complete', (newVal) => {
+      if (newVal[0] !== 'id') {
+        this.product[newVal[0]] = newVal[1]
+      }
+    })
+  },
+  watch: {
+    product (newVal, oldVal) {
+      this.localBus.$emit('changes', newVal)
+    }
   },
   methods: {
     fieldsBlock () {
@@ -60,14 +70,23 @@ export default {
       this.fieldsBlock()
     },
     save () {
-      this.eventBus.$emit('complete', this.product)
-      this.fieldsBlock()
+      if (!this.fields.isBlocked) {
+        this.eventBus.$emit('finish', this.product)
+        this.product = {
+          id: '',
+          name: '',
+          price: ''
+        }
+        this.fieldsBlock()
+      }
     },
     startEdit (p) {
       this.fieldsEditable()
-      this.product.id = p.id
-      this.product.name = p.name
-      this.product.price = p.price
+      this.product = {
+        id: p.id,
+        name: p.name,
+        price: p.price
+      }
     },
     startCreate () {}
   }

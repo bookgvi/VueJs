@@ -3,7 +3,7 @@
 <!--    <label>{{ value ? `Enter ${ label }:` : `Default ${ label }:` }}</label>-->
     <label for="">{{ formattedLabel }}</label>
     <input
-      v-model="value"
+      v-model.number="value"
       :disabled="fields.isBlocked"
       :class="[fields.bg, fields.text]"
       class="form-control"
@@ -17,16 +17,30 @@ export default {
   data() {
     return {
       value: '',
-      formattedLabel: this.format(this.label)
+      formattedLabel: this.format(this.label),
     }
   },
   inject: {
+    editingEventBus: 'editingEventBus',
     fields: 'fields',
     format: {
       from: 'sourceForLabel',
       default: () => (value) => `Default ${ value }:`
-    },
+    }
   },
+  created () {
+   this.editingEventBus.$on("changes", this.changes)
+  },
+  watch: {
+    value (newValue) {
+      this.editingEventBus.$emit('complete', [this.label.toLowerCase(), this.value])
+    }
+  },
+  methods: {
+    changes (p) {
+      this.value = p[this.label.toLowerCase()]
+    }
+  }
 }
 </script>
 
