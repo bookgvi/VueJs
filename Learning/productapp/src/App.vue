@@ -17,13 +17,13 @@
   import ProductDisplay from "./components/ProductDisplay"
   import ProductEditor from "./components/ProductEditor";
 export default {
-  provide: () => ({
-    color: {
-      bg: 'bg-secondary',
+  provide: {
+    fields: {
+      bg: 'bg-info',
       text: 'text-light',
-    },
-    isBlocked: true
-  }),
+      isBlocked: 'true'
+    }
+  },
   components: {
     ProductDisplay,
     ProductEditor

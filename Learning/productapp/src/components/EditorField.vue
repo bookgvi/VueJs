@@ -4,8 +4,8 @@
     <label for="">{{ formattedLabel }}</label>
     <input
       v-model="value"
-      :disabled="isBlocked"
-      :class="[color.bg, color.text]"
+      :disabled="fields.isBlocked"
+      :class="[fields.bg, fields.text]"
       class="form-control"
     />
   </div>
@@ -21,8 +21,7 @@ export default {
     }
   },
   inject: {
-    color: 'color',
-    isBlocked: 'isBlocked',
+    fields: 'fields',
     format: {
       from: 'sourceForLabel',
       default: () => (value) => `Default ${ value }:`
