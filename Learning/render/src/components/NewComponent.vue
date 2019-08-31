@@ -9,9 +9,9 @@ export default {
   render: function (h) {
     return h('div', [
       h('h2', this.someProp),
-      Array.apply(null, {length: 20})
+      Array.apply(null, new Array(9))
         .map(() => {
-          return h('p','Vue')
+          return h('p', 'Vue')
         })
     ])
   },
