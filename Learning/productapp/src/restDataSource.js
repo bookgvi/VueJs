@@ -10,9 +10,9 @@ export class RestDataSource {
     await Axios.post(baseUrl, product)
   }
   async updateProduct (product) {
-    await Axios.put(baseUrl+product.is, product)
+    await Axios.put(baseUrl+product.id, product)
   }
-  async deletProduct (product) {
+  async deleteProduct (product) {
     await Axios.delete(baseUrl+product.id, product)
   }
 }

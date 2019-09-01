@@ -32,6 +32,7 @@ export default {
   },
   inject: {
     eventBus: 'eventBus',
+    restDataSource: 'restDataSource'
   },
   provide: function () {
       return {
@@ -69,8 +70,9 @@ export default {
       this.product = {}
       this.fieldsBlock()
     },
-    save () {
+    async save () {
       if (!this.fields.isBlocked) {
+        await this.restDataSource.updateProduct(this.product)
         this.eventBus.$emit('finish', this.product)
         this.product = {
           id: '',

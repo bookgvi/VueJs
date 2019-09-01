@@ -63,7 +63,7 @@ export default {
       this.products.push(...products)
     },
     async deleteProd (p) {
-      //await this.restDataSource.deleteProduct(p)
+      await this.restDataSource.deleteProduct(p)
       this.products.splice(p.id - 1, 1)
     }
   }
