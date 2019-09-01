@@ -14,6 +14,7 @@
                   @click="editProduct(p)">
             Edit
           </button>
+          <button @click="deleteProd(p)" class="btn btn-sm btn-danger">Delete</button>
         </td>
       </tr>
       <tr v-if="products.length===0">
@@ -30,36 +31,40 @@
 </template>
 
 <script>
-import Axios from 'axios'
-const baseUrl = 'http://localhost:3500/products/'
+// import Axios from 'axios'
+// const baseUrl = 'http://localhost:3500/products/'
 export default {
   data: () => ({
       products: []
   }),
-  inject: ['eventBus'],
+  inject: ['eventBus', 'restDataSource'],
   filters: {
     currency(value) {
       return `$${value.toFixed(2)}`;
     }
   },
-  created () {
+  async created () {
     this.eventBus.$on('finish', p => {
       this.products[p.id - 1].name = p.name
       this.products[p.id - 1].price = p.price
     })
-    Axios.get(baseUrl).then(response => {
-      this.processProducts(response.data)
-    })
+    // let data = (await Axios.get(baseUrl)).data
+    // this.processProducts(data)
+    this.processProducts(await this.restDataSource.getProduct())
   },
   methods: {
     createNew() {
     },
-    editProduct(product) {
+    async editProduct(product) {
       this.eventBus.$emit('edit', product)
     },
     processProducts (products) {
       this.products.splice(0)
       this.products.push(...products)
+    },
+    async deleteProd (p) {
+      //await this.restDataSource.deleteProduct(p)
+      this.products.splice(p.id - 1, 1)
     }
   }
 }
