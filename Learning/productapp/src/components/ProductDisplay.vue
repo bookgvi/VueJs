@@ -62,9 +62,10 @@ export default {
       this.products.splice(0)
       this.products.push(...products)
     },
-    async deleteProd (p) {
-      await this.restDataSource.deleteProduct(p)
-      this.products.splice(p.id - 1, 1)
+    async deleteProd (product) {
+      let index = this.products.findIndex(p => p.id === product.id)
+      await this.restDataSource.deleteProduct(product)
+      this.products.splice(index, 1)
     }
   }
 }
