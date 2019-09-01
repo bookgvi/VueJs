@@ -16,6 +16,9 @@
           </button>
         </td>
       </tr>
+      <tr v-if="products.length===0">
+        <td colspan="5" class="text-center">No data</td>
+      </tr>
       </tbody>
     </table>
     <div class="text-center">
@@ -25,7 +28,10 @@
     </div>
   </div>
 </template>
+
 <script>
+import Axios from 'axios'
+const baseUrl = 'http://localhost:3500/products/'
 export default {
   data: () => ({
       products: []
@@ -41,12 +47,19 @@ export default {
       this.products[p.id - 1].name = p.name
       this.products[p.id - 1].price = p.price
     })
+    Axios.get(baseUrl).then(response => {
+      this.processProducts(response.data)
+    })
   },
   methods: {
     createNew() {
     },
     editProduct(product) {
       this.eventBus.$emit('edit', product)
+    },
+    processProducts (products) {
+      this.products.splice(0)
+      this.products.push(...products)
     }
   }
 }
