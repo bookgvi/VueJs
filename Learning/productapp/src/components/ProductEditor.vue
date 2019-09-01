@@ -50,7 +50,7 @@ export default {
     })
   },
   watch: {
-    product (newVal, oldVal) {
+    product (newVal) {
       this.localBus.$emit('changes', newVal)
     }
   },
@@ -65,7 +65,7 @@ export default {
       this.fields.text = 'text-primary'
       this.fields.isBlocked = false
     },
-    cancel (predicate) {
+    cancel () {
       this.product = {}
       this.fieldsBlock()
     },

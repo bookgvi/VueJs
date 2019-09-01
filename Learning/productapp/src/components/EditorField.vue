@@ -33,7 +33,7 @@ export default {
   },
   watch: {
     value (newValue) {
-      this.editingEventBus.$emit('complete', [this.label.toLowerCase(), this.value])
+      this.editingEventBus.$emit('complete', [this.label.toLowerCase(), newValue])
     }
   },
   methods: {
