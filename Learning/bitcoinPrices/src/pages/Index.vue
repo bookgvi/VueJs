@@ -2,12 +2,12 @@
   <q-page>
    <div class="row q-pa-xl">
      <q-card style="width: 290px;" class="text-center q-pa-lg">
-         <h6 class="q-ma-none">BTS/USD</h6>
+         <h6 class="q-ma-none">{{ bitcoin.time.updated }}</h6>
        1BTS = ${{ bitcoin.bpi.USD.rate }} {{ bitcoin.bpi.USD.code }}
      </q-card>
      <q-space></q-space>
      <q-card style="width: 290px;" class="text-center q-pa-lg">
-         <h6 class="q-ma-none">BTS/EUR</h6>
+         <h6 class="q-ma-none">{{ bitcoin.time.updated }}</h6>
        1BTS = ${{ bitcoin.bpi.EUR.rate }} {{ bitcoin.bpi.EUR.code }}
      </q-card>
    </div>
