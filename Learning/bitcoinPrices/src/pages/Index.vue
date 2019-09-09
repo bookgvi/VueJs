@@ -25,8 +25,8 @@ export default {
       bitcoin: ''
     }
   },
-  async created () {
-    this.bitcoin = await this.$http.get().then(resp => resp.data)
+  async mounted () {
+    this.bitcoin = (await this.$http.get()).data
   }
 }
 </script>
