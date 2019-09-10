@@ -1,5 +1,5 @@
 <template lang="pug">
-  q-page.flex.q-pa-xl
+  q-page.flex.flex-center.q-pa-xl
     login-form
 </template>
 

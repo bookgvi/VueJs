@@ -1,38 +1,38 @@
 <template lang="pug">
-  q-form
-    q-input(
-      v-model="login"
-      placeholder="Login"
-      label="Login"
-      clearable
-      outlined
-      dense
-    )
-    q-input.q-mt-xs(
-      v-model="password"
-      type="password"
-      placeholder="Password"
-      label="Password"
-      clearable
-      outlined
-      dense
-    )
-    q-btn.q-mt-sm.q-ml-sm(@click="submit" color="primary") Login
-    q-btn.q-mt-sm.q-ml-sm(@click="cancel") Cancel
+  q-dialog(v-model="card" persistent)
+    q-card.q-pa-lg
+      q-input(
+        v-model="login"
+        placeholder="Login"
+        label="Login"
+        clearable
+        outlined
+        dense
+      )
+      q-input.q-mt-xs(
+        v-model="password"
+        type="password"
+        placeholder="Password"
+        label="Password"
+        clearable
+        outlined
+        dense
+      )
+      .row
+        q-btn.q-mt-sm.col(@click="enter" color="primary") Login
 </template>
 
 <script>
 export default {
   name: 'LoginForm',
   data: () => ({
+    card: '',
     login: '',
     password: ''
   }),
   methods: {
-    submit () {},
-    cancel () {
-      this.login = ''
-      this.password = ''
+    enter () {
+      this.$router.push('dashboard')
     }
   }
 }
