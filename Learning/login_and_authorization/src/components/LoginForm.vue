@@ -32,7 +32,9 @@ export default {
   }),
   methods: {
     enter () {
-      this.$router.push('dashboard')
+      const { login, password } = this
+      console.log(login, password)
+      // this.$router.push('dashboard')
     }
   }
 }
