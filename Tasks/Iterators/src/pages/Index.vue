@@ -1,7 +1,7 @@
 <template lang="pug">
   q-page.q-ma-xl
     .row
-      q-input.q-mr-sm(v-model="str" outlined dense style="width: 500px")
+      q-input.q-mr-sm.justify-center(v-model="str" outlined dense style="width: 500px")
         template(#append)
           div {{ wCount }}
     .row
