@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/LOC/.idea/LOC.iml" filepath="$PROJECT_DIR$/LOC/.idea/LOC.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/VueJs.iml" filepath="$PROJECT_DIR$/.idea/VueJs.iml" />
     </modules>
   </component>
