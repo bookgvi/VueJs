@@ -1,7 +1,5 @@
-<template>
-  <q-page class="flex flex-center">
-    <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
-  </q-page>
+<template lang="pug">
+  q-page.flex.flex-center
 </template>
 
 <style>
@@ -9,6 +7,5 @@
 
 <script>
 export default {
-  name: 'PageIndex'
 }
 </script>
