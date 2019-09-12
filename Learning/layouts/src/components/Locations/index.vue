@@ -1,6 +1,6 @@
 <template lang="pug">
   .row.justify-center
-    .col-6.justify-center
+    .col-7
       datas
       descriptions
       detail
@@ -18,7 +18,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>
