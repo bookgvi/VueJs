@@ -10,6 +10,7 @@
           v-model="city"
           :options="cityArr"
           @input.native="getHint($event)"
+          @focus="city = ''"
           @filter="filtr"
           input-debounce="0"
           use-input
@@ -27,7 +28,7 @@ export default {
   // name: 'ComponentName',
   data () {
     return {
-      city: null,
+      city: 'Moscow',
       cityArr: [],
       options: {
         token: 'daa0567fa0fb73ae73ae7e1e389dfefe52ef35b9'
@@ -42,7 +43,6 @@ export default {
         query: e.target.value
       }).then(resp => {
         if (!resp.data.suggestions.length) { return }
-        console.log(resp.data.suggestions)
         this.cityArr = resp.data.suggestions.map(item => {
           if (item.data.city) {
             return item.data.city_with_type
