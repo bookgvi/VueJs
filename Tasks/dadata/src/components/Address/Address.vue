@@ -95,7 +95,8 @@ export default {
           return `${item.value}`
         })
       })
-      axios.get(`https://geocode-maps.yandex.ru/1.x/?apikey=f7da3df2-99ce-456f-b9e5-bc1934a8579a&geocode=ул%20Ткацкая,%20д%201`).then(resp => console.log(resp.data))
+      await axios.get(`https://geocode-maps.yandex.ru/1.x/?apikey=${this.options.yAPI}&format=json&geocode=${this.city},${this.address}`)
+        .then(resp => console.log(resp.data.response))
     },
     filtr (val, update) {
       update(() => {})
