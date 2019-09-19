@@ -26,6 +26,7 @@ export default {
   },
   data () {
     return {
+      token: 'daa0567fa0fb73ae73ae7e1e389dfefe52ef35b9',
       settings: {
         apiKey: 'f7da3df2-99ce-456f-b9e5-bc1934a8579a'
       },
