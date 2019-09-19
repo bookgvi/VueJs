@@ -4,8 +4,12 @@
       .col
         q-select(
           use-input
+          fill-input
+          emit-value
+          hide-selected
           v-model="val"
           :options="options"
+          @click.prevent=""
           @input.native="dadata($event)"
           @filter="(val, update) => update(() => {})"
           clearable
@@ -40,7 +44,7 @@ export default {
     return {
       token: 'daa0567fa0fb73ae73ae7e1e389dfefe52ef35b9',
       options: ['1', '2', '3'],
-      val: '',
+      val: [],
       settings: {
         apiKey: 'f7da3df2-99ce-456f-b9e5-bc1934a8579a'
       },
@@ -67,8 +71,22 @@ export default {
           Authorization: `Token ${this.token}`
         }
       }).then(resp => {
-        console.log(this.val)
+        console.log('qq', e.target.value)
         this.options = resp.data.suggestions.map(item => item.value)
+      })
+      await this.$axios.get('https://geocode-maps.yandex.ru/1.x/', {
+        params: {
+          apikey: this.settings.apiKey,
+          format: 'json',
+          geocode: e.target.value
+        }
+      }).then(resp => {
+        console.log(this.coordsMarker)
+        const posArr = resp.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ')
+        this.coordsMap = []
+        this.coordsMap.push(+posArr[0])
+        this.coordsMap.push(+posArr[1])
+        console.log(this.coordsMap)
       })
     }
   }
