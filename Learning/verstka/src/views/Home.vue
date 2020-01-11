@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <div class="subMenu">
-      <router-link to="hello">Hello</router-link>
+      <router-link to="hello">Hello</router-link> |
+      <router-link to="blockclassic">Simple CSS</router-link>
     </div>
     <router-view />
   </div>

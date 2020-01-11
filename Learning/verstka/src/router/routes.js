@@ -4,8 +4,9 @@ const routes = [
     name: 'home',
     component: () => import('../views/Home'),
     children: [
-      { path: '', component: () => import('../views/Hello') },
-      { path: 'hello', name: 'hello', component: () => import('../views/Hello') }
+      { path: '', component: () => import('../components/Classic') },
+      { path: 'hello', name: 'hello', component: () => import('../views/Hello') },
+      { path: 'blockclassic', name: 'blockclassic', component: () => import('../components/Classic') }
     ]
   },
   {
