@@ -1,18 +1,21 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="subMenu">
+      <router-link to="hello">Hello</router-link>
+    </div>
+    <router-view />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
+  name: 'homeView'
 }
 </script>
+
+<style scoped>
+  .subMenu {
+    background-color: #ededed;
+    padding: 0 0 10px 0;
+  }
+</style>
