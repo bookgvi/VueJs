@@ -43,12 +43,15 @@ export default {
     padding: 2rem 0;
     border: 1px solid #000;
   }
+  .blocks__btn {
+    text-align: right;
+  }
   button {
     margin: 0 10px 10px 0;
   }
   .blocks__block {
     display: inline-block;
-    width: 50px;
+    width: 50%;
     height: 100px;
     border: 1px solid grey;
     margin: 0 1rem;

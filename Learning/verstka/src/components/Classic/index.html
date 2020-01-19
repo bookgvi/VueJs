@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="blocks">
+    <div class="blocks__btn">
+        <button id="add">Add</button>
+        <button id="del">Delete</button>
+    </div>
+    <div class="blocks__row">
+        <div class="blocks__block">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur debitis incidunt maiores nisi non
+        </div>
+    </div>
+</div>
+
+<script>
+  parent = function () {
+    return document.querySelector('.blocks__row')
+  }
+  blockAdd = function () {
+    const block = document.querySelector('.blocks__block')
+    if (!block) return
+    const blockX = block.cloneNode(false)
+    parent().appendChild(blockX)
+  }
+  blockDel = function () {
+    const block = document.querySelector('.blocks__block')
+    const blocksCount = document.querySelectorAll('.blocks__block').length
+    if (blocksCount === 1) return
+    parent().removeChild(block)
+  }
+  const btnAdd = document.getElementById('add')
+  const btnDel = document.getElementById('del')
+
+  btnAdd.addEventListener('click', blockAdd)
+  btnDel.addEventListener('click', blockDel)
+
+</script>
+
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .blocks {
+        height: 300px;
+        padding: 1rem;
+        margin: 1rem;
+        border: 1px solid #000;
+    }
+
+    .blocks__btn {
+        width: 100%;
+        text-align: left;
+    }
+
+    button {
+        margin: 0 10px 10px 0;
+    }
+
+    .blocks__row {
+        width: 100px;
+        max-width: 75%;
+        margin: 0 auto;
+    }
+
+    .blocks__block {
+        height: 120px;
+        border: 1px solid grey;
+        margin: 0 auto;
+    }
+</style>
+
+</body>
+</html>
